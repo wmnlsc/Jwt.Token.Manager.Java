@@ -19,7 +19,9 @@ repositories {
 dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     // Add Spring Boot Starter for annotations like @ConfigurationProperties
-    implementation("org.springframework.boot:spring-boot-starter:3.1.4")
+    implementation("org.springframework.boot:spring-boot-starter") {
+        exclude(group = "org.yaml", module = "snakeyaml")
+    }
 
     // Add Configuration Processor for metadata generation
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:3.1.4")
