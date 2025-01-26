@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("maven-publish")
+    id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "com.bbhub.jwt.token.manager"
@@ -17,6 +18,12 @@ repositories {
 
 dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    // Add Spring Boot Starter for annotations like @ConfigurationProperties
+    implementation("org.springframework.boot:spring-boot-starter:3.1.4")
+
+    // Add Configuration Processor for metadata generation
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))

@@ -1,6 +1,5 @@
 package com.bbhub.jwt.token.manager.models;
 
-import java.time.Instant;
 import java.util.Date;
 
 public class RefreshTokenModel {

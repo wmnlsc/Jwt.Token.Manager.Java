@@ -1,5 +1,11 @@
 package com.bbhub.jwt.token.manager.models;
 
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties(prefix = "apitokenoptions")
 public class TokenOptionModel {
     private String secretKey;
     private String issuer;
