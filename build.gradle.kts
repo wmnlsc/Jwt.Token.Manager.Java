@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.bbhub.jwt.token.manager"
-version = "1.0.2"
+version = "1.0.3"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -19,7 +19,7 @@ repositories {
 dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     // Add Spring Boot Starter for annotations like @ConfigurationProperties
-    implementation("org.springframework.boot:spring-boot-starter") {
+    implementation("org.springframework.boot:spring-boot-starter:3.1.4") {
         exclude(group = "org.yaml", module = "snakeyaml")
     }
 
