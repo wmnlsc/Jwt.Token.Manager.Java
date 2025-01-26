@@ -44,7 +44,7 @@ public class TokenManager  implements ITokenManager {
                 .setAudience(options.getAudience())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTimeMillis))
-                .signWith(secretKey, SignatureAlgorithm.ES256)
+                .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }
 
