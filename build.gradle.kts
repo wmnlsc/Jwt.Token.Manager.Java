@@ -3,8 +3,8 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.bbhub"
-version = "1.0.0"
+group = "com.bbhub.jwt.token.manager"
+version = "1.0.2"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
