@@ -3,6 +3,7 @@ package com.bbhub.jwt.token.manager.services;
 import com.bbhub.jwt.token.manager.interfaces.ITokenManager;
 import com.bbhub.jwt.token.manager.models.RefreshTokenModel;
 import com.bbhub.jwt.token.manager.models.TokenOptionModel;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -38,8 +39,13 @@ public class TokenManager  implements ITokenManager {
                 ? 10 * 60 * 1000
                 : options.getAccessTokenExpirationMinutes() * 60 * 1000;
 
+        Claims claimsValue = Jwts.claims();
+        for (Map.Entry<String, String> claim : claims) {
+            claimsValue.put(claim.getKey(), claim.getValue());
+        }
+
         return Jwts.builder()
-                .setClaims(Map.of("claims", claims))
+                .setClaims(claimsValue)
                 .setIssuer(options.getIssuer())
                 .setAudience(options.getAudience())
                 .setIssuedAt(new Date())
@@ -72,8 +78,14 @@ public class TokenManager  implements ITokenManager {
         }
 
         SecretKey key = Keys.hmacShaKeyFor(options.getSecretKey().getBytes(StandardCharsets.UTF_8));
+
+        Claims claimsValue = Jwts.claims();
+        for (Map.Entry<String, String> claim : claims) {
+            claimsValue.put(claim.getKey(), claim.getValue());
+        }
+
         return Jwts.builder()
-                .setClaims(Map.of("claims", claims))
+                .setClaims(claimsValue)
                 .setIssuer(options.getIssuer())
                 .setAudience(options.getAudience())
                 .setIssuedAt(new Date())
